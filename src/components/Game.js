@@ -18,7 +18,7 @@ export default function Game() {
             return;
         }
         setDrawCounter(draw)
-        squareCopy[index] = xIsCurrentPlayer ? <span style={styles.X}>X</span> : <span style={styles.O}>O</span>
+        squareCopy[index] = xIsCurrentPlayer ? 'X' : 'O'
         setSquares(squareCopy)
         setXisCurrentPlayer(!xIsCurrentPlayer)
 

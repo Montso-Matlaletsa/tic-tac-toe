@@ -1,4 +1,3 @@
-import React, {useState} from 'react';
 import Square from './Square'
 
 const styles = {
@@ -12,17 +11,14 @@ const styles = {
     }
 }
 
-const action = ()=>{
-    alert('hala')
-}
 
-export default function Board({squares}) {
+export default function Board({squares, action}) {
 
 
   return <div style={styles.board}>
         {
             squares.map((square, index) =>(
-                <Square value={index} key={index} action={action} />
+                <Square value={square} key={index} action={()=>action(index)} />
             ))
         }
   </div>;

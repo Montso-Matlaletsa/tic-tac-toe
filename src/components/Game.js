@@ -18,7 +18,7 @@ export default function Game() {
             return;
         }
         setDrawCounter(draw)
-        squareCopy[index] = xIsCurrentPlayer ? 'X' : 'O'
+        squareCopy[index] = xIsCurrentPlayer ? <span style={styles.X}>X</span> : <span style={styles.O}>O</span>
         setSquares(squareCopy)
         setXisCurrentPlayer(!xIsCurrentPlayer)
 
@@ -57,5 +57,13 @@ const styles = {
         marginTop: '100px',
         backgroundColor: 'black',
         left: '50%'
+    },
+    X:{
+        color: 'red',
+        fontSize: 50
+    },
+    O:{
+        color: 'green',
+        fontSize: 50
     }
 }

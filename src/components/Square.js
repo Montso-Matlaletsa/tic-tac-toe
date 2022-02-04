@@ -1,7 +1,13 @@
 import React from 'react';
 
+export default function Square({action, value, i}) {
+  return <button style={style.square} onClick={() => action(i)}>
+        <span style={style.text}>{value}</span>    
+  </button>;
+}
+
 const style = {
-    square :{
+    square: {
         width: '100%',
         height: '100%',
         backgroundColor: 'blue',
@@ -12,15 +18,8 @@ const style = {
         border: 'none',
         color: 'white'
     },
-    text : {
+    text: {
         color: 'white',
         fontSize: '50px',
     }
-}
-
-
-export default function Square({action, value}) {
-  return <button style={style.square} onClick={action}>
-        <span style={style.text}>{value}</span>    
-  </button>;
 }

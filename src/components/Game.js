@@ -7,15 +7,17 @@ import Button from "./button";
 export default function Game() {
     const [xIsCurrentPlayer, setXisCurrentPlayer] = useState(true)
     const [squares, setSquares] = useState(Array(9).fill(null));
+    const [drawCounter, setDrawCounter] = useState(0)
     const winner = calculateWinner(squares)
 
 
     const action = (index) =>{
         const squareCopy = [...squares]
+        let draw = drawCounter + 1
         if (calculateWinner(squares) || squares[index]) {
             return;
         }
-
+        setDrawCounter(draw)
         squareCopy[index] = xIsCurrentPlayer ? 'X' : 'O'
         setSquares(squareCopy)
         setXisCurrentPlayer(!xIsCurrentPlayer)
@@ -25,16 +27,21 @@ export default function Game() {
     const restartGame = ()=>{
         const squareCopy = Array(9).fill(null)
         const currentPlayer = true
+        const drawCounter = 0
         setSquares(squareCopy)
         setXisCurrentPlayer(currentPlayer)
-
+        setDrawCounter(drawCounter)
     }
 
   return <div>
       {
-          winner && <Button winner={winner} restart={restartGame} />
+          winner && <Button message={"Winner is: "+winner} restart={restartGame} />
 
       }
+      {
+          drawCounter === 9 && <Button message="It's a Draw!!" restart={restartGame} />
+      }
+
       <div style={styles.board}>
           <Board squares={squares} action={action} />
       </div>

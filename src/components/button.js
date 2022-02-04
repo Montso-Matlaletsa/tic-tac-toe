@@ -1,8 +1,8 @@
 import React from "react";
 
-export default function button({winner, restart}){
+export default function button({message, restart}){
     return <div style={styles.container}>
-        <h2 style={styles.text}>Winner is: {winner}</h2>
+        <h2 style={styles.text}>{message}</h2>
         <br />
         <button onClick={restart} style={styles.button}>RESTART GAME</button>
     </div>

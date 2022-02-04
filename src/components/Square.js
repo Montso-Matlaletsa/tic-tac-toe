@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default function Square({action, value, i}) {
-  return <button style={style.square} onClick={() => action(i)}>
+export default function Square({action, value, index}) {
+  return <button style={style.square} onClick={() => action(index)}>
         <span style={style.text}>{value}</span>    
   </button>;
 }

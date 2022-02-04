@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Board from './Board'
 import {calculateWinner} from '../helpers/calculateWinner'
+import Button from "./button";
 
 
 export default function Game() {
@@ -21,10 +22,18 @@ export default function Game() {
 
     }
 
+    const restartGame = ()=>{
+        const squareCopy = Array(9).fill(null)
+        const currentPlayer = true
+        setSquares(squareCopy)
+        setXisCurrentPlayer(currentPlayer)
+
+    }
+
   return <div>
       {
-          winner &&
-            <h2 style={styles.text}>Winner is: {winner}</h2>
+          winner && <Button winner={winner} restart={restartGame} />
+
       }
       <div style={styles.board}>
           <Board squares={squares} action={action} />
@@ -39,10 +48,7 @@ const styles = {
         alignItems: 'center',
         display: 'flex',
         marginTop: '100px',
-        backgroundColor: 'black'
-    },
-    text:{
-        color: 'white',
-        textAlign: 'center'
+        backgroundColor: 'black',
+        left: '50%'
     }
 }
